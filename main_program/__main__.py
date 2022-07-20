@@ -241,7 +241,7 @@ def graph():
                         elif 0<i<m_m-1:
                             for j in range(1,m[startMonth-1+i]+1):
                                 dateList.append(j)
-                                monthList.append((startMonth-1)+1)
+                                monthList.append(startMonth+i)
                                 yearList.append(startYear)
                         else :
                             for j in range(1,lastDay+1):
@@ -284,8 +284,8 @@ def graph():
 
             plt.clf()
             #그래프
-            plt.plot(resultList, positive_rate, color='blue', linestyle='-', marker='o')
-            plt.plot(resultList, negative_rate, color='red', linestyle='-', marker='o')
+            plt.plot(resultList, positive_rate, color='blue', linestyle='-')
+            plt.plot(resultList, negative_rate, color='red', linestyle='-')
             #plt.plot(resultList,bad,color='red',linestyle='-',marker='o')
             #resultList = [i for i in resultList[1:len(resultList)] if int(i)%2 == 0]
             plt.xticks(resultList, rotation='70')  # x축 라벨의 이름 pow지움
@@ -302,7 +302,7 @@ def graph():
             plt.savefig(f'../main_program/static/images/{start_date}{end_date}{search}graph.jpg')
             plt.clf()
             # 관심도 그래프
-            plt.plot(resultList, all_n,color='green', linestyle='-', marker='o')
+            plt.plot(resultList, all_n,color='green', linestyle='-')
             plt.xticks(resultList, rotation='70')  # x축 라벨의 이름 pow지움
             #plt.title(f'{search} 일별 관심도 그래프', )  # 그래프 제목 설정
             plt.ylim([0,max(all_n)])
