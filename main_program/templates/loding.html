@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크롤링 작업중</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link rel="shortcut icon" href="../static/images/favicon.png">
+</head>
+<style >
+    .italicText{
+            font-style: italic;
+        }
+    .imgCenter {
+        text-align:center;
+    }
+    
+</style>
+<style type="text/css">
+    #load {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        display: block;
+        opacity: 0.8;
+        background: white;
+        z-index: 99;
+        text-align: center;
+    }
+
+    #load > img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 100;
+    }
+    </style>
+<script src="https://code.jquery.com/jquery-1.8.0.js"
+    integrity="sha256-00Fh8tkPAe+EmVaHFpD+HovxWk7b97qwqVi7nLvjdgs="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(window).on('load', function () {
+        $("#load").hide();
+    });
+</script>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">DH_SERVICE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home(검색)</a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link" href="/resultPage">Result(결과)</a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link" href="/guide">Guide(사이트 설명)</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="image">
+        <img src="../static/로고5.png" style="width: 100%;">
+    </div>
+<center>
+    <div class="container">
+        <div class="row">
+            <div class="italicText">
+                <br>
+                <font size="2">감성 분석을 기반으로 하는 동향분석 서비스 입니다.</font>
+            </div>
+            <br>
+            <div>
+                <br>
+                <img src="../static/images/icons8-spinner.gif" alt="loading">
+                <br>
+                <br>
+            </div>
+            
+            <h4>"{{search}}"에 대한 댓글을 불러오는 중입니다.</h4>
+            <br><br>
+            <div class="italicText">
+                <font size="3">아래의 버튼을 클릭 후 댓글 수집이 끝나면 감성분석 버튼이 생성됩니다.</font>
+                <br>
+            </div>
+
+
+            <br>
+            <br>
+            
+            
+            <button type="button" class="btn btn-outline-success" onClick="location.href='loding'">댓글 수집 기다리기</button>
+            <br><br>
+            
+        </div>
+        <br><br>
+        <!-- 광고 삽입 코드 -->
+        <hr>
+        <ins class="kakao_ad_area" style="display:none;" 
+        data-ad-unit    = "DAN-G9r3bF8U0VG5cV6L" 
+        data-ad-width   = "320" 
+        data-ad-height  = "100"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        <hr>
+    </div><!--container-->
+</center>
+
+
+
+<!--footer 부분-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">
+            Copyright &copy; 우리집은 남동향
+        </p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+crossorigin="anonymous"></script>
+
+</body>
+
+</html>

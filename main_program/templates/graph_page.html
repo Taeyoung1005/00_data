@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 아래 태그 삭제 X -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/images/favicon.png">
+
+    <title>그래프 출력</title>  
+
+</head>
+<style >
+    .italicText{
+            font-style: italic;
+        }
+    .valueTextSet{
+        color:cornflowerblue;
+    }
+</style>
+<style type="text/css">
+    #load {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        display: block;
+        opacity: 0.8;
+        background: white;
+        z-index: 99;
+        text-align: center;
+    }
+
+    #load > img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 100;
+    }
+    </style>
+<script src="https://code.jquery.com/jquery-1.8.0.js"
+    integrity="sha256-00Fh8tkPAe+EmVaHFpD+HovxWk7b97qwqVi7nLvjdgs="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(window).on('load', function () {
+        $("#load").hide();
+    });
+</script>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">DH_SERVICE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home(검색)</a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link" href="/resultPage">Result(결과)</a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link" href="/guide">Guide(사이트 설명)</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="image">
+        <img src="../static/로고5.png" style="width: 100%;">
+    </div>
+    <!-- 로딩화면-->
+    <div id="load">
+        <img src="../static/images/icons8-spinner.gif" alt="loading">
+        <a target="_blank" href="https://icons8.com/icon/JsEIppO8i4X0/spinner">Spinner</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+    </div>
+
+<center>
+    <br>
+    </div>
+    <div class="container">
+        
+        
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4"><div class ="valueTextSet">&#60;{{value_search}}&#62;</div>감성분석 결과</h1>
+                    
+                    <div class="italicText">
+                        <font size="6">감성분석을 통한 {{start_date}} ~ {{end_date}} 동안의 그래프 결과 입니다.</font>
+                        <br><hr><br>
+                    </div>
+        
+                    <div class="row">
+                        {% for el in rank %}
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card mb-4">
+                                <div class="card-body">{{rank.index(el)+1}}위 {{el[0]}}</div>
+                                <div class="card-footer d-flex align-items-center justify-content-center">
+                                    <a class="small stretched-link">{{el[1]}}개</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-area me-1"></i>
+                                    일별 동향 분석 그래프
+                                </div>
+                                <div class="card-body"><img src="../static/images/{{search_day}}graph.jpg" class="card-img-top" alt="..."  onerror="this.src='../static/images/no_photo.png'"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar me-1"></i>
+                                    일별 관심도 그래프
+                                </div>
+                                <div class="card-body"><img src="../static/images/{{search_day}}all.jpg" class="card-img-top" alt="..."  onerror="this.src='../static/images/no_photo.png'"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr><br>
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        상위 50개 단어
+                                    </div>
+                                    <div class="card-body"><img src="../static/images/{{value_search}}_{{start_date}}_{{end_date}}.jpg" class="card-img-top" alt="..."  onerror="this.src='../static/images/no_photo.png'"></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        전체적인 여론 퍼센트
+                                    </div>
+                                    <br><br><br>
+                                    <div class="card-body"><img src="../static/images/{{search_day}}circle.jpg" class="card-img-top" alt="..."  onerror="this.src='../static/images/no_photo.png'"></div>
+                                    <br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- 광고 삽입 코드 -->
+        <hr>
+        <ins class="kakao_ad_area" style="display:none;" 
+        data-ad-unit    = "DAN-G9r3bF8U0VG5cV6L" 
+        data-ad-width   = "320" 
+        data-ad-height  = "100"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        <hr>
+    </div><!--<div class="container">-->
+</center>
+
+<!--footer 부분-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">
+            Copyright &copy; 우리집은 남동향
+        </p>
+    </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

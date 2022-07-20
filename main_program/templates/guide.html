@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 아래 태그 삭제 X -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/images/favicon.png">
+        
+    <title>guide page</title>
+
+    <style>
+        .cardTitle {
+            text-align: left;
+        }
+        .cardText {
+            text-align: justify;
+        }
+        .marginSet {
+            margin: 10px;
+        }
+        .italicText{
+            font-style: italic;
+            text-align: left;
+        }
+    </style>
+
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">DH_SERVICE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home(검색)</a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link" href="/resultPage">Result(결과)</a>
+                </li>
+                <li class="nav-item">                    
+                    <a class="nav-link active" aria-current="page" href="/guide">Guide(사이트 설명)</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 이미지 -->
+<!-- <div class="image">
+    <img src="../static/images/footerPhoto.png" style="width: 100%;">
+</div> -->
+
+<!-- 제목 -->
+<div class="container">
+    <div class="marginSet">
+        <h2>DH_service 사용 가이드입니다.</h2>
+        <hr>
+    </div>
+</div>
+<center>
+    <div class="container">
+        <p>
+            DH_SERVICE는 뉴스 기사 댓글을 분석하여 사용자가 검색한 키워드의 동향이 긍정적인지, 부정적인지 분석하는 시스템입니다. 하단 설명을 읽고 사용해주시기 바랍니다. 감사합니다.
+        </p>
+        <!-- 첫 번째 -->
+        <div class="card" style="width: 100%;">
+            <img src="../static/images/indexPagePhoto.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="cardTitle">1. Home(검색) 페이지</h5>
+            <p class="cardText">(1) 검색할 키워드를 입력하십시오.<br>
+                (2) 분석하고 싶은 기간을 선택하십시오.<br>
+                (3) search(검색) 버튼을 클릭해주십시오.
+            </p>
+            </div>
+        </div>
+        <br>
+
+        <!-- 두 번째 -->
+        <div class="card" style="width: 100%;">
+            <img src="../static/images/loadingPagePhoto.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="cardTitle">2. 분석 페이지</h5>
+            <p class="cardText">사용자가 입력한 검색어가 포함된 기사의 댓글을 분석하고 있습니다.</p>
+            </div>
+        </div>
+        <br>
+
+        <!-- 세 번째 -->
+        <div class="card" style="width: 100%;">
+            <img src="../static/images/graphPagePhoto.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="cardTitle">3. 분석 결과 페이지</h5>
+            <p class="cardText">(1) 사용자가 입력한 검색어를 표시합니다.<br>
+                (2) 해당 키워드의 긍정적인 척도를 나타내는 그래프입니다.<br>
+                (3) 해당 키워드의 부정적인 척도를 나타내는 그래프입니다.<br>
+                (4) 해당 키워드의 관심 척도를 나타내는 그래프입니다.<br>
+                <font size="2"><div class="italicText">* 댓글이 없거나, 긍정 또는 부정의 척도가 0인 경우, 해당 날짜의 결과 값이 0으로 표시될 수 있습니다.</div></font>
+            </p>
+            </div>
+        </div>
+        <br>
+
+        <!-- 네 번째 -->
+        <div class="card" style="width: 100%;">
+            <img src="../static/images/resultPagePhoto.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="cardTitle">4. Result(결과) 페이지</h5>
+            <p class="cardText">(1) 지난 결과 값을 열람하려면 상단 바에서 Result(결과) 버튼을 누르십시오.<br>
+                (2) 사용자가 최근에 분석한 결과부터 보여줍니다.
+            </p>
+            </div>
+        </div>
+        <br>
+
+
+
+
+
+
+
+
+
+
+        <!-- 광고 삽입 코드 -->
+        <hr>
+        <ins class="kakao_ad_area" style="display:none;" 
+        data-ad-unit    = "DAN-G9r3bF8U0VG5cV6L" 
+        data-ad-width   = "320" 
+        data-ad-height  = "100"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        <hr>
+    </div>
+</center>
+
+<!--footer-->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">
+            Copyright &copy; 우리집은 남동향
+        </p>
+    </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
