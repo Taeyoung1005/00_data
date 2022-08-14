@@ -18,7 +18,7 @@ import datetime
 import numpy as np
  
 from tqdm import trange
-from utils.processing_json import Processing_json
+import utils.processing_json as Processing_json
 
 import sys
 sys.setrecursionlimit(5000)
@@ -176,6 +176,18 @@ def main(search, start_date, end_date):
                     json_data[date] = {}
 
     json_data = dict(sorted(json_data.items()))
+    #이모지 제거
+    json_data = Processing_json.dateNList(json_data)
+
+    #이모지 지움으로 인해 빈 댓글 발생 처리
+    for date in json_data:
+        for url in json_data[date]:
+            for comments in json_data[date][url]:
+                example = []
+                for i in range(len(json_data[date][url][comments])):
+                    if len(json_data[date][url][comments][i].strip(" ")) != 0:
+                        example.append(json_data[date][url][comments][i])
+                json_data[date][url][comments] = example  
 
     with open(f'../main_program/result/naver_news/news_{search}_naver_{start_date}_{end_date}.json', 'w', encoding='UTF-8') as f:
         json.dump(json_data, f, indent=4, sort_keys=True, ensure_ascii=False)
@@ -202,8 +214,7 @@ def main(search, start_date, end_date):
                 dic[date].update(dic2[date])
             except:
                 continue
-
-
+            
     dic2 = {}
     for date in dic.keys():
         if date[:6] not in dic2.keys():

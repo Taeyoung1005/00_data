@@ -71,6 +71,12 @@
     <div class="wordGraph">
         <h4>{{ word[16:] }} 동향 그래프입니다.</h4>
         <p>{{word[:8]}}~{{word[8:16]}}</p>
+        <form action="/" method="post">
+            <input type="search" name='keyword' id="keyword" value= {{word[16:]}} >
+            <input type="date" name='start_date' id="start_date" value={{word[0:4]}}-{{word[4:6]}}-{{word[6:8]}} >
+            <input type="date" name='end_date' id="end_date" value= {{word[8:12]}}-{{word[12:14]}}-{{word[14:16]}} >
+            <button class="btn btn-outline-success" input type="submit">search</button>
+        </form>
         <hr>
     </div>
     
@@ -126,12 +132,6 @@
                 </div>
             </div>
         </div>
-        <form action="/" method="post">
-            <input type="search" name='keyword' id="keyword" value= {{word[16:]}} >
-            <input type="date" name='start_date' id="start_date" value={{word[0:4]}}-{{word[4:6]}}-{{word[6:8]}} >
-            <input type="date" name='end_date' id="end_date" value= {{word[8:12]}}-{{word[12:14]}}-{{word[14:16]}} >
-            <button class="btn btn-outline-success" input type="submit">search</button>
-        </form>
     </div><!-- <div class="row"> -->
     <hr>
     {% endfor %}

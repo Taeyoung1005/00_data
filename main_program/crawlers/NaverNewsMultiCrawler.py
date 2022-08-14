@@ -68,6 +68,13 @@ def crawlLinks( search, start_date, end_date, driver_url, chrome_options):
     for process in processes:
         process.join()
 
+    #연애 및 스포츠 기사 제거
+    sub_list = []
+    for news_link in url_list:
+        if "https://sports.news.naver.com" not in news_link and "https://entertain.naver.com" not in news_link:
+            sub_list.append(news_link)
+    url_list = sub_list
+
     with open(f'result/naver_news/txt/urls_{search}_naver_{start_date}_{end_date}.txt', 'w', encoding='UTF-8') as f:
         f.writelines('\n'.join(list(set(list(url_list)))))
 
@@ -80,7 +87,7 @@ def crawlLinksProcess(date_list, driver_url, chrome_options, search, url_list):
     for date_ in date_list:
         url_page_num = 1
 
-        for _ in range(2):
+        while True:
             date__ = str(date_).replace('-', '.')
             date___ = str(date_).replace('-', '')
             url = f'https://search.naver.com/search.naver?where=news&sm=tab_pge&query={search}&sort=2&photo=0&field=0&pd=3&ds={date__}&de={date__}&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:r,p:from{date___}to{date___},a:all&start={url_page_num}'
@@ -156,7 +163,7 @@ def crawlNews( search, start_date, end_date, driver_url, chrome_options):
 
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"}
     
-    fbc = FeedbackCounter( len(news_queue) )
+    fbc = FeedbackCounter(len(news_queue))
     
     rs = (grequests.get(news_queue[i], headers=headers, callback=fbc.feedback) for i in trange(len(news_queue), file=sys.stdout, desc='get Grequest'))
     a = grequests.map(rs)
@@ -167,7 +174,7 @@ def crawlNews( search, start_date, end_date, driver_url, chrome_options):
         soup = None
 
         if a[i] is not None:
-            soup = (a[i].url,bs(a[i].content, 'html.parser'))
+            soup = (a[i].url,bs(a[i].content, 'lxml'))
 
         if soup is None or len(soup)<2:
             continue
